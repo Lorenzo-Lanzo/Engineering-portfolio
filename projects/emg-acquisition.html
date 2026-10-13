@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- EDIT PAGE TITLE, DESCRIPTION, AND SHARING TEXT HERE -->
+  <title>EMG acquisition board — Lorenzo Lanzo</title>
+  <meta name="description" content="An isolated, eight-channel acquisition system for bioelectric signals, developed for preclinical research.">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="EMG acquisition board — Lorenzo Lanzo">
+  <meta property="og:description" content="An isolated, eight-channel acquisition system for diaphragmatic EMG, developed for preclinical respiratory research.">
+  <!-- Add absolute canonical and og:image URLs after choosing a domain; see README. -->
+  <link rel="icon" type="image/svg+xml" href="../assets/icons/favicon.svg">
+  <link rel="stylesheet" href="../assets/css/styles.css?v=f7ab0731498e">
+  <script src="../assets/js/theme.js"></script>
+  <script src="../assets/js/main.js" defer></script>
+  <script src="../assets/js/project.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+    <div class="container header-inner">
+      <!-- EDIT YOUR NAME HERE; repeat this change on the other pages. -->
+      <a class="brand" href="../index.html" aria-label="Lorenzo Lanzo, home"><span class="brand-mark" aria-hidden="true">L<span>_</span></span><span>Lorenzo Lanzo<span class="brand-subtitle">Hardware & embedded systems</span></span></a>
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav" hidden>Menu <span aria-hidden="true">☰</span></button>
+      <nav id="site-nav" class="site-nav" aria-label="Main navigation"><a href="../index.html">Home</a><a href="../projects.html" aria-current="page">Projects</a><a href="../about.html">About</a><a href="../index.html#contact">Contact</a></nav>
+      <button class="theme-toggle" type="button" aria-label="Switch color theme" hidden><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v2m0 14v2M3 12h2m14 0h2M5.6 5.6 7 7m10 10 1.4 1.4M5.6 18.4 7 17M17 7l1.4-1.4"/><circle cx="12" cy="12" r="4"/></svg></button>
+    </div>
+  </header>
+  <main id="main">
+    <section class="page-intro container">
+      <nav class="breadcrumbs" aria-label="Breadcrumb"><a href="../index.html">Home</a><span aria-hidden="true">/</span><a href="../projects.html">Projects</a><span aria-hidden="true">/</span><span>EMG acquisition board</span></nav>
+      <p class="eyebrow"><span class="short-rule"></span> BIOMEDICAL / EMBEDDED</p>
+      <h1>EMG acquisition board</h1><p class="lead">An isolated, eight-channel acquisition system for diaphragmatic EMG, developed for preclinical respiratory research.</p>
+      <div class="project-hero-meta"><span>2026</span><span>Biomedical</span><span class="project-label">RESEARCH PROTOTYPE</span></div>
+      <ul class="tags project-technologies" aria-label="Technologies"><li>ADS1299</li><li>Isolation</li><li>STM32</li><li>KiCad</li><li>C</li></ul>
+    </section>
+    <div class="container"><figure class="project-cover engineering-cover"><img src="../assets/images/projects/emg-assembled.webp" width="1600" height="881" alt="Assembled ADS1299 EMG acquisition board with electrode connector and isolation slot" data-media-label="ASSEMBLED PCB" fetchpriority="high"><figcaption class="cover-caption">Assembled acquisition PCB, photographed for the thesis.</figcaption></figure></div>
+    <div class="container case-layout">
+      <nav class="toc" aria-label="On this page"><span class="small-label">IN THIS PAGE</span><ul><li><a href="#overview">Project overview</a></li><li><a href="#system">System & specifications</a></li><li><a href="#hardware">Hardware & PCB</a></li><li><a href="#firmware">Firmware & data flow</a></li><li><a href="#gallery">From layout to assembled board</a></li><li><a href="#model">Interactive 3D model</a></li><li><a href="#downloads">Documentation & CAD</a></li></ul></nav>
+      <div class="case-content">
+        <!-- EDIT PROJECT OVERVIEW HERE -->
+        <section id="overview" class="case-section"><h2>Project overview</h2><p>I designed the acquisition PCB and embedded data path for electromyography (EMG).</p><p>This work formed part of my master’s thesis at TechRes Lab, Politecnico di Milano, in collaboration with the University of Utah. My contribution connects the analog front end, PCB isolation architecture, STM32 firmware, and synchronized experimental recordings.</p></section>
+        <!-- EDIT SYSTEM & SPECIFICATIONS HERE -->
+        <section id="system" class="case-section"><h2>System & specifications</h2><table class="spec-table"><caption class="sr-only">Hardware and system summary</caption><tbody><tr><th scope="row">Acquisition</th><td>8 simultaneous channels · ADS1299 integrated PGA and 24-bit ADC architecture</td></tr><tr><th scope="row">PCB</th><td>4 layers · KiCad</td></tr><tr><th scope="row">Power domains</th><td>Galvanically isolated acquisition and digital interface domains</td></tr><tr><th scope="row">Electrodes</th><td>DB25 connector for electrode breakout</td></tr><tr><th scope="row">Host interface</th><td>DB15 connector for power and digital signals</td></tr><tr><th scope="row">Firmware host</th><td>STM32 NUCLEO-F756 · C · SPI acquisition and UART streaming</td></tr></tbody></table><p class="media-note">*ADC resolution describes the component architecture, rather than a measured effective resolution of the complete system.</p></section>
+        <!-- EDIT HARDWARE & PCB HERE -->
+        <section id="hardware" class="case-section"><h2>Hardware & PCB</h2><p>The ADS1299 integrates programmable gain and simultaneous conversion, reducing the number of separate analog stages. Passive input filtering and protection sit close to the electrode connector.</p><p>Digital isolators and an isolated DC/DC converter separate the acquisition domain from the host. An LT3097 regulator provides low-noise bipolar analog rails. Copper keep-outs and a routed slot define the physical isolation boundary on the four-layer PCB.</p><p>I compared front-end filtering options in TINA-TI, balancing common-mode rejection, in-band response, and attenuation of high-frequency interference. These simulations informed the design; they are distinct from measured board performance.</p></section>
+        <!-- EDIT FIRMWARE & DATA FLOW HERE -->
+        <section id="firmware" class="case-section"><h2>Firmware & data flow</h2><p>An ADS1299 data-ready interrupt starts SPI reception. A three-frame ring buffer decouples incoming samples from processing, and completed transfers are decoded from signed 24-bit values into the channel buffer.</p><p>The superloop builds framed UART messages with channel identifiers and error checks. Queued transmission and retry handling feed both the laptop logging path and the ventilator interface, allowing EMG and pneumatic data to be recorded together.</p></section>
+        <!-- EDIT FROM LAYOUT TO ASSEMBLED BOARD HERE -->
+        <section id="gallery" class="case-section"><h2>From layout to assembled board</h2><div class="gallery engineering-gallery"><figure><a href="../assets/images/projects/emg-layout.webp" data-lightbox data-caption="Annotated layout: domain separation and isolation boundary."><img src="../assets/images/projects/emg-layout-thumb.webp" width="800" height="618" alt="Annotated PCB layout showing digital and EMG domains" loading="lazy"></a><figcaption>Annotated layout: domain separation and isolation boundary.</figcaption></figure><figure><a href="../assets/images/projects/emg-render.webp" data-lightbox data-caption="KiCad assembly render."><img src="../assets/images/projects/emg-render-thumb.webp" width="800" height="438" alt="KiCad render of the EMG acquisition PCB" loading="lazy"></a><figcaption>KiCad assembly render.</figcaption></figure><figure><a href="../assets/images/projects/emg-assembled.webp" data-lightbox data-caption="Assembled board from the thesis."><img src="../assets/images/projects/emg-assembled-thumb.webp" width="800" height="440" alt="Populated EMG acquisition PCB on the workbench" loading="lazy"></a><figcaption>Assembled board from the thesis.</figcaption></figure></div><p class="media-note">Select an image to enlarge it.</p></section>
+        <!-- EDIT INTERACTIVE 3D MODEL HERE -->
+        <section id="model" class="case-section"><h2>Interactive 3D model</h2><div class="media-frame model-stage"><div class="media-placeholder"><span class="project-label">PCB ASSEMBLY / 3D</span><h3>Inspect the board from every angle.</h3><p>Load the supplied EMG acquisition assembly to inspect component placement, isolation spacing, and connectors.</p><button class="button button-primary" type="button" data-load-model>Load interactive board</button><noscript><p>JavaScript is required for the viewer. The CAD downloads remain available below.</p></noscript></div><model-viewer data-src="../assets/models/emg-acquisition.glb?v=18456319d3b5" alt="EMG acquisition PCB assembly converted from the supplied STEP file" camera-controls touch-action="pan-y" loading="lazy" shadow-intensity="1" interaction-prompt="none"></model-viewer><p class="model-message" data-model-status role="status">Select the button to load the interactive board.</p></div><p class="media-note">Converted from the supplied STEP assembly for browser viewing. This CAD view documents the designed assembly; use the photographs for the fabricated board.</p></section>
+        <!-- EDIT DOCUMENTATION & CAD HERE -->
+        <section id="downloads" class="case-section"><h2>Documentation & CAD</h2><div class="resource-list"><a class="resource-link" href="../assets/models/emg-acquisition.glb?v=18456319d3b5" download><span class="resource-type">GLB</span><span><strong>Interactive board model</strong><small>Converted STEP geometry</small></span><span class="resource-action">Download</span></a><a class="resource-link" href="../assets/models/emg-acquisition-step.zip?v=18456319d3b5" download><span class="resource-type">STEP</span><span><strong>Original CAD assembly</strong><small>Supplied STEP file, compressed for download</small></span><span class="resource-action">Download</span></a></div><p>The companion <a class="text-link" href="ventilator-controller.html">ventilator controller page</a> describes the board that this module is connected to.</p></section>
+      </div>
+    </div>
+    <div class="container project-bottom"><a href="../projects.html">Back to all projects</a><a href="../index.html#contact">Get in touch</a></div>
+  </main>
+  <footer class="site-footer"><div class="container footer-inner"><span>© <span data-current-year>2026</span> Lorenzo Lanzo. Built with curiosity.</span><span class="small-label">HARDWARE / FIRMWARE / MECHANICS</span><a href="#main">Back to top</a></div></footer>
+</body>
+</html>

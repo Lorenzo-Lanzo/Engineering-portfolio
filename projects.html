@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- EDIT PAGE TITLE, DESCRIPTION, AND SHARING TEXT HERE -->
+  <title>Projects — Lorenzo Lanzo</title>
+  <meta name="description" content="Explore six engineering projects across biomedical electronics, embedded systems, and audio DSP.">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Projects — Lorenzo Lanzo">
+  <meta property="og:description" content="Explore six engineering projects across biomedical electronics, embedded systems, and audio DSP.">
+  <!-- Add absolute canonical and og:image URLs after choosing a domain; see README. -->
+  <link rel="icon" type="image/svg+xml" href="assets/icons/favicon.svg">
+  <link rel="stylesheet" href="assets/css/styles.css?v=f7ab0731498e">
+  <script src="assets/js/theme.js"></script>
+  <script src="assets/js/main.js" defer></script>
+  
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+    <div class="container header-inner">
+      <!-- EDIT YOUR NAME HERE; repeat this change on the other pages. -->
+      <a class="brand" href="index.html" aria-label="Lorenzo Lanzo, home"><span class="brand-mark" aria-hidden="true">L<span>_</span></span><span>Lorenzo Lanzo<span class="brand-subtitle">Hardware & embedded systems</span></span></a>
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav" hidden>Menu <span aria-hidden="true">☰</span></button>
+      <nav id="site-nav" class="site-nav" aria-label="Main navigation"><a href="index.html">Home</a><a href="projects.html" aria-current="page">Projects</a><a href="about.html">About</a><a href="index.html#contact">Contact</a></nav>
+      <button class="theme-toggle" type="button" aria-label="Switch color theme" hidden><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v2m0 14v2M3 12h2m14 0h2M5.6 5.6 7 7m10 10 1.4 1.4M5.6 18.4 7 17M17 7l1.4-1.4"/><circle cx="12" cy="12" r="4"/></svg></button>
+    </div>
+  </header>
+  <main id="main">
+    <section class="page-intro container"><p class="eyebrow"><span class="short-rule"></span> THE WORK / BIOMEDICAL & AUDIO</p><h1>Engineering, one<br><span class="accent">project at a time.</span></h1><p class="lead">From bioelectrical acquisition and ventilator electronics to reusable DSP cores and instrument interfaces. Explore the designs and the prototypes behind the work.</p></section>    <section id="project-collection" class="section container">
+      <div class="section-heading"><div><p class="eyebrow">THE PROJECT COLLECTION</p><h2>Six projects. Two connected fields.</h2></div><span class="small-label">06 PROJECT CASE STUDIES</span></div>
+      <div class="filter-bar" data-filter-group hidden aria-label="Filter projects by application"><button class="filter-button" data-filter="all" aria-pressed="true">All work <span>06</span></button><button class="filter-button" data-filter="biomedical" aria-pressed="false">Biomedical</button><button class="filter-button" data-filter="audio" aria-pressed="false">Audio DSP</button></div>
+      <p class="sr-only" data-filter-status role="status"></p>
+      <div class="project-grid" data-project-grid>
+        <article class="project-card" data-categories="biomedical"><a class="card-image engineering-card" href="projects/emg-acquisition.html"><img src="assets/images/projects/emg-assembled-thumb.webp" width="800" height="440" alt="Assembled ADS1299 EMG acquisition board with electrode connector and isolation slot" loading="lazy"><span class="image-number" aria-hidden="true">01</span><span class="image-badge">ASSEMBLED PCB</span></a><div class="card-meta"><span>Biomedical</span><span>2026</span></div><h3><a href="projects/emg-acquisition.html">EMG acquisition board</a></h3><p>An isolated, eight-channel acquisition system for diaphragmatic EMG, developed for preclinical respiratory research.</p><ul class="tags" aria-label="Technologies"><li>ADS1299</li><li>Isolation</li><li>STM32</li><li>KiCad</li><li>C</li></ul></article>
+        <article class="project-card" data-categories="biomedical"><a class="card-image engineering-card" href="projects/ventilator-controller.html"><img src="assets/images/projects/ventilator-assembled-thumb.webp" width="800" height="565" alt="Populated ventilator control board with STM32 Nucleo and power and sensor connectors" loading="lazy"><span class="image-number" aria-hidden="true">02</span><span class="image-badge">ASSEMBLED PCB</span></a><div class="card-meta"><span>Biomedical</span><span>2026</span></div><h3><a href="projects/ventilator-controller.html">Mechanical ventilator control board</a></h3><p>A redesigned controller PCB for a research ventilator, integrating power distribution, pneumatic sensing, and actuator interfaces.</p><ul class="tags" aria-label="Technologies"><li>Mechanical Ventilation</li><li>KiCad</li><li>Power management</li></ul></article>
+        <article class="project-card" data-categories="audio"><a class="card-image engineering-card" href="projects/adau1701-som.html"><img src="assets/images/projects/som-assembled-thumb.webp" width="800" height="450" alt="Fabricated ADAU1701 audio SoM boards on pink protective foam" loading="lazy"><span class="image-number" aria-hidden="true">03</span><span class="image-badge">PCB PHOTO</span></a><div class="card-meta"><span>Audio DSP</span><span>2025</span></div><h3><a href="projects/adau1701-som.html">ADAU1701 audio SoM</a></h3><p>A reusable audio-processing core that puts a SigmaDSP and its companion STM32 on a compact plug-in module.</p><ul class="tags" aria-label="Technologies"><li>ADAU1701</li><li>STM32F030</li><li>SigmaStudio</li><li>EasyEDA</li></ul></article>
+        <article class="project-card" data-categories="audio"><a class="card-image engineering-card" href="projects/eurorack-dsp-module.html"><img src="assets/images/projects/eurorack-assembly-thumb.webp" width="800" height="450" alt="Assembled Eurorack carrier and audio SoM on the workbench" loading="lazy"><span class="image-number" aria-hidden="true">04</span><span class="image-badge">VIDEO STILL</span></a><div class="card-meta"><span>Audio DSP</span><span>2025</span></div><h3><a href="projects/eurorack-dsp-module.html">Eurorack DSP module</a></h3><p>An analog carrier and front-panel interface that brings the reusable audio SoM into a modular synthesizer.</p><ul class="tags" aria-label="Technologies"><li>Eurorack</li><li>ADAU1701</li><li>Analog conditioning</li><li>Modular synthesis</li></ul></article>
+        <article class="project-card" data-categories="audio"><a class="card-image engineering-card" href="projects/effects-pedal.html"><img src="assets/images/projects/pedal-assembly-thumb.webp" width="800" height="450" alt="Assembled effects-pedal electronics with a blue carrier board and plug-in SoM" loading="lazy"><span class="image-number" aria-hidden="true">05</span><span class="image-badge">VIDEO STILL</span></a><div class="card-meta"><span>Audio DSP</span><span>2025</span></div><h3><a href="projects/effects-pedal.html">Digital effects pedal</a></h3><p>A guitar and bass effects platform combining a high-impedance analog front end with the shared audio-processing module.</p><ul class="tags" aria-label="Technologies"><li>ADAU1701</li><li>Instrument input</li><li>9 V supply</li><li>DSP</li></ul></article>
+        <article class="project-card" data-categories="audio"><a class="card-image engineering-card" href="projects/stm32-audio-codec.html"><img src="assets/images/projects/stm32-codec-front-thumb.webp" width="800" height="722" alt="Front CAD view of an STM32H7 audio board with connectors and battery holder" loading="lazy"><span class="image-number" aria-hidden="true">06</span><span class="image-badge">CAD RENDER</span></a><div class="card-meta"><span>Audio DSP</span><span>Rev. 0</span></div><h3><a href="projects/stm32-audio-codec.html">STM32H7 audio development board</a></h3><p>A portable audio-development platform combining an STM32H7, audio codec, storage, battery charging, and a display interface.</p><ul class="tags" aria-label="Technologies"><li>STM32H7</li><li>TLV320AIC3104</li><li>KiCad</li><li>USB / SD</li></ul></article>
+      </div>
+      <p class="empty-state" data-filter-empty hidden>No projects in this category yet. Choose All work to see the collection.</p>
+    </section>    <section id="contact" class="contact-section"><div class="container contact-inner"><div><p class="eyebrow">04 / LET’S CONNECT</p><h2>Have a hardware<br>problem in mind?</h2><p>I’d like to hear what you’re building.</p></div><div class="contact-links"><a class="contact-email" href="mailto:lorenzo.lanzo@mail.polimi.it">lorenzo.lanzo@mail.polimi.it</a><div class="contact-social"><a class="contact-linkedin" href="https://www.linkedin.com/in/lorenzo-lanzo" target="_blank" rel="noopener noreferrer">LinkedIn</a><figure class="contact-qr"><a href="https://www.linkedin.com/in/lorenzo-lanzo" target="_blank" rel="noopener noreferrer"><img src="assets/images/linkedin-qr.png" width="2277" height="2277" alt="QR code for Lorenzo Lanzo's LinkedIn profile" loading="lazy" decoding="async"></a><figcaption>Scan to connect</figcaption></figure></div></div></div></section>
+  </main>
+  <footer class="site-footer"><div class="container footer-inner"><span>© <span data-current-year>2026</span> Lorenzo Lanzo. Built with curiosity.</span><span class="small-label">HARDWARE / FIRMWARE / MECHANICS</span><a href="#main">Back to top</a></div></footer>
+</body>
+</html>
