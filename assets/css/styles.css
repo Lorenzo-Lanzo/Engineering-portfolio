@@ -30,5 +30,6 @@
 
 .project-technologies { margin-top:20px; }
 .project-cover { margin:0; }
+.project-cover--compact { width:60%; margin-inline:auto; }
 .about-sidebar h2.eyebrow { font-size:.8rem; letter-spacing:.11em; }
 @media (max-width:480px) { .brand-subtitle { display:none; } }
